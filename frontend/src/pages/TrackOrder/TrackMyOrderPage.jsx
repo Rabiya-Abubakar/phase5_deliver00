@@ -115,7 +115,8 @@ const TrackMyOrderPage = () => {
 
   useEffect(() => {
     const script = document.createElement("script");
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1XlcnnFHS_GIdzTz4CntmdcJayequwg&callback=initMap";
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`;
+//"https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1XlcnnFHS_GIdzTz4CntmdcJayequwg&callback=initMap";
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
