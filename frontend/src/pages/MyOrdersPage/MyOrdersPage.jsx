@@ -1,10 +1,3 @@
-
-
-
-
-
-
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Use Link to navigate to the details page
 import "./MyOrdersPage.css";
@@ -61,25 +54,25 @@ const MyOrdersPage = () => {
 
       <div className="buttons-container">
         <button
-          className={activeButton === "" ? "active" : ""}
+          className={activeButton === "" ? "active" : ""} id="all"
           onClick={() => handleStatusFilter("")}
         >
           All
         </button>
         <button
-          className={activeButton === "delivered" ? "active" : ""}
+          className={activeButton === "delivered" ? "active" : ""} id="delivered"
           onClick={() => handleStatusFilter("delivered")}
         >
           Delivered
         </button>
         <button
-          className={activeButton === "pending" ? "active" : ""}
+          className={activeButton === "pending" ? "active" : ""} id="pending"
           onClick={() => handleStatusFilter("pending")}
         >
           Pending
         </button>
         <button
-          className={activeButton === "cancelled" ? "active" : ""}
+          className={activeButton === "canceled" ? "active" : ""} id="canceled"
           onClick={() => handleStatusFilter("canceled")}
         >
           Cancelled

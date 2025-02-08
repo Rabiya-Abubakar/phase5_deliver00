@@ -1,10 +1,46 @@
 /* Form container styling */
-.login-container,
-.signup-container {
-  background-color: white;
+.login-body{
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  margin: 0;
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #dddddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%; /* Ensures the body takes up the full height of the viewport */
+  margin: 0; /* Remove any default margin */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: auto; 
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+.login-container {
+  background-color:white;
   border-radius: 10px;
   padding: 20px 30px;
-  width: 300px;
+  width: 400px;
+  height: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.signup-container{
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px 30px;
+  width: 400px;
+  height: 700px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: center;
   margin: auto;

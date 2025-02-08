@@ -6,7 +6,7 @@
   background-color: #333;
   padding: 10px 20px;
   color: white;
-  position: sticky;
+  position: relative;
   top: 0;
   z-index: 1000;
 }
@@ -32,6 +32,7 @@
 
 .navbar-link:hover {
   background-color: #555;
+  color: #d11470;
 }
 
 .navbar-link.login {

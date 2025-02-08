@@ -1,43 +1,101 @@
-/* Footer styles */
+/* Footer Styles */
 .footer {
-  background-color: #333;
+  background-color: #111;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
-  /* position: fixed; */
+  position: relative  ;
   bottom: 0;
   width: 100%;
-  font-size: 14px;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between; /* Distribute items evenly */
-  align-items: center; /* Align items vertically */
-  padding: 10px 20px; /* Adjust padding for better spacing */
+  flex-shrink: 0;
 }
 
-.footer-content {
+/* Ensure the page content expands, pushing the footer to the bottom */
+html, .footer-body {
+  height: 100%;
+  margin: 0;
   display: flex;
-  justify-content: space-between; /* Spread items evenly in the row */
-  width: 100%;
-  max-width: 1200px; /* Optional, to prevent too wide footer on large screens */
+  flex-direction: column;
 }
 
-.footer-links {
+.footer-container {
   display: flex;
-  gap: 20px; /* Space between links */
+  flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
-.footer-link {
+/* Make sure the content area grows to fill the page */
+.main-content {
+  flex-grow: 1;
+}
+
+/* Logo Styling */
+.footer-logo h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff007f; /* Pink theme */
+}
+
+.footer-logo p {
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* Navigation Links */
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-links ul li {
+  display: inline;
+}
+
+.footer-links ul li a {
   color: white;
   text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.footer-links ul li a:hover {
+  color: #ff007f;
+}
+
+/* Social Media Icons */
+.footer-social a {
+  color: white;
+  font-size: 24px;
+  margin: 0 10px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.footer-social a:hover {
+  color: #ff007f;
+  transform: scale(1.2);
+}
+
+/* Copyright Section */
+.footer-bottom {
+  margin-top: 20px;
   font-size: 14px;
+  color: #bbb;
 }
 
-.footer-link:hover {
-  text-decoration: underline;
-}
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-container {
+    text-align: center;
+    gap: 15px;
+  }
 
-.footer-text {
-  font-size: 12px; /* Adjusted font size for copyright */
+  .footer-links ul {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

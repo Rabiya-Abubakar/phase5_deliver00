@@ -1,0 +1,83 @@
+/* Navbar Styles */
+.heda{
+    padding-top: 30px;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(255, 0, 119);
+  }
+  
+  .heda p{
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    font-weight: 900;
+  }
+  
+  .heda-menu{
+    display: flex; /* Enable Flexbox on the navbar */
+    vertical-align: middle; /* Align items to the left */
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 20px;
+    border: 1px solid #00e1ff;
+    background-color: white;
+    text-decoration: none;
+    
+  }
+  
+  
+  li {
+    transition: transform 0.2s ease; /* Smooth transition for the effect */
+    text-decoration: none;
+    color: white;
+  }
+  
+  li:hover {
+    transform: translateY(-3px); /* Move the link 3 pixels up on hover */
+  }
+  
+  .heda .menu a:hover {
+    color: #ffccdd; /* Soft pink hover effect */
+  }
+  
+  .heda-logo{
+    color: rgb(0, 0, 0);
+    font-size: 2.0px;
+    text-align: center;
+    left: 500px;
+  }
+  
+  .btn-sign {
+    position: relative;
+    top: -135px;
+    right: -700px;
+    background-color: #ffffff;
+    color: rgb(8, 8, 8);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-sign:hover {
+    background-color:#c0015a;
+  }
+  
+  .btn-login {
+    position: relative;
+    top: -135px;
+    right: -750px;
+    background-color: #ffffff;
+    color: rgb(8, 8, 8);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-login:hover {
+    background-color:#c0015a; /* Darker pink */
+  }
+  
+  

@@ -130,7 +130,7 @@ const navigate = useNavigate()
           />
         </div>
 
-        <button type="submit">Create Order</button>
+        <button className="btn-create" type="submit">Create Order</button>
       </form>
     </div>
   );

@@ -65,6 +65,7 @@ const Login = () => {
 
 
   return (
+    <div className="login-body">
     <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
@@ -116,6 +117,7 @@ const Login = () => {
           Don't have an account? <Link to="/signup">Sign Up</Link>
         </p>
       </div>
+    </div>
     </div>
   );
 };
