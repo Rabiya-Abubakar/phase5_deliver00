@@ -92,6 +92,10 @@ import cancelOrder from "../../images/cancelorder.png";
 import updateorder from "../../images/updateorder.png";
 import trackorder from "../../images/trackorder.png";
 import deliverydetails from "../../images/deliverydetails.png";
+import notifications from "../../images/notifications.png";
+import statistics from "../../images/statistics.png";
+import recentactivity from "../../images/recentactivity.png";
+
 // import favicon from './logo192.png'
 
 const Dashboard = () => {
@@ -109,11 +113,7 @@ const Dashboard = () => {
       </header> */}
 
       <div className="dashboard-content">
-        <div className="card">
-          <h2>Statistics</h2>
-          <p>Overview of your statistics.</p>
-        </div>
-
+        
         <Link to="/createorder" className="card">
           <h2>Create Order</h2>
           <p>Overview of your Create Order.</p>
@@ -144,15 +144,23 @@ const Dashboard = () => {
           <img src={deliverydetails} alt=" delivery details" />
         </Link>
 
-        <div className="card">
-          <h2>Recent Activity</h2>
-          <p>List of recent activities here.</p>
-        </div>
+        <Link to="/statistics" className="card">
+          <h2>Statistics</h2>
+          <p>Overview of your statistics.</p>
+          <img src={statistics} alt=" statistics" />
+        </Link>
 
-        <div className="card">
+        <Link to="/notifications" className="card">
           <h2>Notifications</h2>
-          <p>Recent notifications will show up here.</p>
-        </div>
+          <p>Notification.</p>
+          <img src={notifications} alt=" notification" />
+        </Link>
+
+        <Link to="/recent activities" className="card">
+          <h2>Recent Activities</h2>
+          <p>Recent Activities.</p>
+          <img src={recentactivity} alt=" recent activities" />
+        </Link>
       </div>
     </div>
   );
