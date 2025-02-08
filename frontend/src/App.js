@@ -58,6 +58,8 @@ import TrackMyOrderPage from "./pages/TrackOrder/TrackMyOrderPage";
 import OrdersPage from "./pages/ordersPage/OrdersPage";
 import OrderDetailsAdm from "./pages/OrderDetailsAdm/OrderDetailsAdm";
 import UsersPage from "./pages/AllUsers/AllUsers";
+import StatisticsPage from "./pages/StatisticsPage";
+import RecentActivityPage from "./pages/RecentActivityPage";
 
 const AppContent = () => {
   const location = useLocation(); // Get current route
@@ -79,6 +81,10 @@ const AppContent = () => {
         <Route path="/updateorder" element={<UpdateOrderPage />} />
         <Route path="/trackorder" element={<TrackMyOrderPage />} />
         <Route path="/deliverydetails" element={<DeliveryDetailsPage />} />
+        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="/recentactivity" element={<RecentActivityPage />} />
+
+
       </Routes>
       {!hideNavbarAndFooter && <Footer />} {/* Hide Footer on login/signup */}
     </div>
