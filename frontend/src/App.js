@@ -61,6 +61,7 @@ import UsersPage from "./pages/AllUsers/AllUsers";
 import StatisticsPage from "./pages/StatisticsPage";
 import RecentActivityPage from "./pages/RecentActivityPage";
 
+
 const AppContent = () => {
   const location = useLocation(); // Get current route
   const hideNavbarAndFooter = location.pathname === "/" || location.pathname === "/signup";
