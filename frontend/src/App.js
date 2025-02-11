@@ -52,6 +52,7 @@ import DeliveryDetailsPage from "./pages/DeliveryDetailsPage";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import CreateOrderPage from "./pages/createorder/CreateOrderPage";
+import CancelOrderPage from "./pages/CancelOrder/CancelOrderPage";
 import MyOrdersPage from "./pages/MyOrdersPage/MyOrdersPage";
 import OrderDetailsPage from "./pages/orderDetailsPage/OrderDetailsPage";
 import TrackMyOrderPage from "./pages/TrackOrder/TrackMyOrderPage";
@@ -60,15 +61,22 @@ import OrderDetailsAdm from "./pages/OrderDetailsAdm/OrderDetailsAdm";
 import UsersPage from "./pages/AllUsers/AllUsers";
 import StatisticsPage from "./pages/StatisticsPage";
 import RecentActivityPage from "./pages/RecentActivityPage";
-
+import AboutUsPage from "./pages/AboutUs/AboutUsPage";
+import ServicesPage from "./pages/Services/ServicesPage";
+import ContactUsPage from "./pages/ContactUs/ContactUsPage";
+import "leaflet/dist/leaflet.css";
+import LoginNav from "./components/LoginNav/LoginNav";
 
 const AppContent = () => {
   const location = useLocation(); // Get current route
-  const hideNavbarAndFooter = location.pathname === "/" || location.pathname === "/signup";
+  const hideNavbarAndFooter = location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/aboutus" || location.pathname === "/services" || location.pathname === "/contactus";
+
+  const showLoginNav = location.pathname !== location.pathname === "/aboutus" || location.pathname === "/services" || location.pathname === "/contactus" || location.pathname === "/";
 
   return (
     <div className="App">
       {!hideNavbarAndFooter && <Navbar />} {/* Hide Navbar on login/signup */}
+      {showLoginNav && <LoginNav />}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
@@ -80,14 +88,17 @@ const AppContent = () => {
         <Route path="/parcelsadm/:orderId" element={<OrderDetailsAdm />} />
         <Route path="/createorder" element={<CreateOrderPage />} />
         <Route path="/updateorder" element={<UpdateOrderPage />} />
+        <Route path="/cancelorder" element={<CancelOrderPage />} />
         <Route path="/trackorder" element={<TrackMyOrderPage />} />
         <Route path="/deliverydetails" element={<DeliveryDetailsPage />} />
         <Route path="/statistics" element={<StatisticsPage />} />
         <Route path="/recentactivity" element={<RecentActivityPage />} />
-
+        <Route path="/aboutus" element={<AboutUsPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/contactus" element={<ContactUsPage />} />
 
       </Routes>
-      {!hideNavbarAndFooter && <Footer />} {/* Hide Footer on login/signup */}
+       <Footer />
     </div>
   );
 };
