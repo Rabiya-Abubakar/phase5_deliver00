@@ -29,17 +29,29 @@ class User(db.Model):
         return f'<User {self.email}>'
 
 # Define Parcel Model
+# class Parcel(db.Model):
+#     __tablename__ = 'parcels'
+#     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+#     origin_pin = db.Column(db.String(255), nullable=False)
+#     destination_pin = db.Column(db.String(255), nullable=False)
+#     weight_kg = db.Column(db.Float, nullable=False)
+#     description = db.Column(db.String(255), nullable=False)
+#     status = db.Column(db.String(50), default='pending', nullable=False)
+
+#     user_id = db.Column(db.String(10), db.ForeignKey('users.id'), nullable=False)  # Change to String(10)
+
 class Parcel(db.Model):
     __tablename__ = 'parcels'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    origin_pin = db.Column(db.String(255), nullable=False)
-    destination_pin = db.Column(db.String(255), nullable=False)
+    origin_lat = db.Column(db.Float, nullable=False)
+    origin_lng = db.Column(db.Float, nullable=False)
+    destination_lat = db.Column(db.Float, nullable=False)
+    destination_lng = db.Column(db.Float, nullable=False)
     weight_kg = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(255), nullable=False)
     status = db.Column(db.String(50), default='pending', nullable=False)
-
-    user_id = db.Column(db.String(10), db.ForeignKey('users.id'), nullable=False)  # Change to String(10)
-
+    
+    user_id = db.Column(db.String(10), db.ForeignKey('users.id'), nullable=False)
 
     def __repr__(self):
         return f'<Parcel ID {self.id} | Origin: {self.origin_pin} | Destination: {self.destination_pin}>'
