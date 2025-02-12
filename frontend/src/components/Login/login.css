@@ -1,5 +1,5 @@
-/* Form container styling */
-.login-body{
+/* Layout for login page */
+.login-page {
   font-family: Arial, sans-serif;
   line-height: 1.6;
   margin: 0;
@@ -7,7 +7,6 @@
   color: #333;
   margin: 0;
   font-family: 'Poppins', Arial, sans-serif;
-  background-color: #dddddd;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,7 +21,32 @@
   left: 0;
 }
 
+/* Info Section */
+.info-section {
+    width: 154%;
+    max-width: 400px;
+    text-align: justify;
+    padding: 20px;
+    color: white;
+    background-color: #cf0389;
+    margin-bottom: 20px;
+    color: #756c6c;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
 
+.info-section h2 {
+  color: white; /* White text */
+  margin-bottom: 10px;
+  font-weight: bolder;
+}
+
+.info-section p {
+  color: white; /* White text */
+  font-size: 16px;
+}
+
+/* Login Container */
 .login-container {
   background-color:white;
   border-radius: 10px;
@@ -35,47 +59,32 @@
   margin-top: 10px;
 }
 
-.signup-container{
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px 30px;
-  width: 400px;
-  height: 700px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  margin: auto;
-  margin-top: 10px;
+.login-container h2 {
+  color: white; /* White text */
 }
 
-/* Form header */
-.login-container h2,
-.signup-container h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-/* Form group spacing */
+/* Form fields */
 .form-group {
   margin-bottom: 15px;
 }
 
-/* Input and select field styling */
-input,
-select {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+label {
+  color: white; /* White text for labels */
 }
 
-/* Button styling */
-button {
+input {
   width: 100%;
   padding: 10px;
-  background-color: #00ff00; /* Bright green button */
-  color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Button */
+button {
+  width: 85%;
+  padding: 10px;
+  background-color: #00ff00;
+  color: black;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -83,18 +92,12 @@ button {
 }
 
 button:hover {
-  background-color: #d6f1d6; /* Slightly darker green on hover */
+  background-color: #d6f1d6;
 }
 
-/* Sign-up link styling */
-.signup-link {
-  margin-top: 15px;
-}
-
+/* Sign-up link */
 .signup-link a {
-  color: #007bff; /* Blue link */
-  text-decoration: none;
-  font-weight: bold;
+  color: #00ff00; /* Bright green link */
 }
 
 .signup-link a:hover {

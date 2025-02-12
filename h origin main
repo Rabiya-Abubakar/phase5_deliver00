@@ -1,0 +1,35 @@
+[33mcommit 8b5a024b00cb8385cf7bd72fa6b8f3c67fa82076[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: + <+>
+Date:   Sat Feb 8 12:41:45 2025 +0300
+
+    added rabz.txt
+
+[33mcommit a5d219950ed9c3496c7c02d809826465f9ec9619[m
+Author: + <+>
+Date:   Sat Feb 8 11:55:19 2025 +0300
+
+    first push
+
+[33mcommit 8c6c70c780030289ec911e9018fc814babb691a9[m
+Author: + <+>
+Date:   Sat Feb 8 11:50:57 2025 +0300
+
+    first push
+
+[33mcommit 43688ec32fd8048bc833a92ca745f41d96b12b85[m
+Author: + <+>
+Date:   Sat Feb 8 11:29:54 2025 +0300
+
+    first push
+
+[33mcommit 1b63b19419ec6c327ba62501e9b6a405d80f5d08[m
+Author: + <+>
+Date:   Wed Feb 5 20:29:50 2025 +0300
+
+    Ensure Gunicorn is in requirements.txt
+
+[33mcommit c5628dacd8a730c8dbe121fa24cd04f74d06cff6[m
+Author: + <+>
+Date:   Wed Feb 5 19:12:49 2025 +0300
+
+    Initial commit

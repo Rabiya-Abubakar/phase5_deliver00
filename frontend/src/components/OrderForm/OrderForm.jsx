@@ -1,34 +1,38 @@
-
-
-
-
-
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Polyline } from 'react-leaflet';
+import L from 'leaflet';
 
 const OrderForm = () => {
-const navigate = useNavigate()
-
   const [order, setOrder] = useState({
     origin_pin: "",
     destination_pin: "",
     weight_kg: "",
     description: "",
-    user_id: "", // We'll set this from localStorage
+    user_id: "",
   });
-
   const [message, setMessage] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [originCoords, setOriginCoords] = useState(null);
+  const [destinationCoords, setDestinationCoords] = useState(null);
 
-  // Set the user_id from localStorage when the component mounts
-  useEffect(() => {
-    const storedUserId = localStorage.getItem("user_id");
-    if (storedUserId) {
-      setOrder((prevOrder) => ({
-        ...prevOrder,
-        user_id: storedUserId,
-      }));
-    }
-  }, []);
+  const HandleMapClick = () => {
+    useMapEvents({
+      click(e) {
+        const { lat, lng } = e.latlng;
+        const placeName = `Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`;
+
+        if (!originCoords) {
+          setOrder({ ...order, origin_pin: placeName });
+          setOriginCoords([lat, lng]);
+        } else if (!destinationCoords) {
+          setOrder({ ...order, destination_pin: placeName });
+          setDestinationCoords([lat, lng]);
+        }
+      }
+    });
+    return null;
+  };
 
   const handleChange = (e) => {
     setOrder({ ...order, [e.target.name]: e.target.value });
@@ -36,37 +40,27 @@ const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+    if (!order.origin_pin || !order.destination_pin || !order.weight_kg || !order.description || !userEmail || !order.user_id) {
+      setMessage("Please fill in all fields.");
+      return;
+    }
+
+    setIsLoading(true);
     try {
       const response = await fetch("http://127.0.0.1:5000/api/v1/parcels", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order),
       });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setMessage("Order created successfully!");
-        setOrder({
-          origin_pin: "",
-          destination_pin: "",
-          weight_kg: "",
-          description: "",
-          user_id: "",
-        });
-
-          // Navigate to dashboard after a delay of 3 seconds
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 3000); // 3-second delay (3000 milliseconds)
-      } else {
-        setMessage(`Error: ${data.message || "Something went wrong"}`);
-      }
+      if (!response.ok) throw new Error("Failed to create order");
+      setMessage("Order created successfully!");
+      setOrder({ origin_pin: "", destination_pin: "", weight_kg: "", description: "", user_id: order.user_id });
+      setOriginCoords(null);
+      setDestinationCoords(null);
     } catch (error) {
-      setMessage("Network error. Please try again.");
+      setMessage(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,63 +69,22 @@ const navigate = useNavigate()
       <h2>Create Order</h2>
       {message && <p className="message">{message}</p>}
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Origin PIN:</label>
-          <input
-            type="text"
-            name="origin_pin"
-            value={order.origin_pin}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Destination PIN:</label>
-          <input
-            type="text"
-            name="destination_pin"
-            value={order.destination_pin}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Weight (kg):</label>
-          <input
-            type="number"
-            name="weight_kg"
-            value={order.weight_kg}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>Description:</label>
-          <input
-            type="text"
-            name="description"
-            value={order.description}
-            onChange={handleChange}
-            required
-          />
-        </div>
-
-        <div className="form-group">
-          <label>User ID:</label>
-          <input
-            type="text"
-            name="user_id"
-            value={order.user_id}
-            onChange={handleChange}
-            readOnly // Since user_id is coming from localStorage, it shouldn't be editable
-          />
-        </div>
-
-        <button className="btn-create" type="submit">Create Order</button>
+        <input type="text" name="origin_pin" value={order.origin_pin} onChange={handleChange} placeholder="Select your Origin from the map" required />
+        <input type="text" name="destination_pin" value={order.destination_pin} onChange={handleChange} placeholder="Select your Destination from the map" required />
+        <input type="number" name="weight_kg" value={order.weight_kg} onChange={handleChange} placeholder="Weight (kg)" required />
+        <input type="text" name="description" value={order.description} onChange={handleChange} placeholder="Description" required />
+        <input type="text" name="user_id" value={order.user_id} onChange={handleChange} placeholder="User ID" required />
+        <input type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder="User Email" required />
+        <button type="submit" disabled={isLoading}>{isLoading ? "Creating..." : "Create Order"}</button>
       </form>
+
+      <MapContainer center={[-1.286389, 36.817223]} zoom={12} style={{ height: "400px", width: "100%" }}>
+        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution='&copy; OpenStreetMap contributors' />
+        <HandleMapClick />
+        {originCoords && <Marker position={originCoords} icon={new L.Icon({ iconUrl: 'your-icon-url.png', iconSize: [25, 25] })}><Popup>{order.origin_pin}</Popup></Marker>}
+        {destinationCoords && <Marker position={destinationCoords} icon={new L.Icon({ iconUrl: 'your-icon-url.png', iconSize: [25, 25] })}><Popup>{order.destination_pin}</Popup></Marker>}
+        {originCoords && destinationCoords && <Polyline positions={[originCoords, destinationCoords]} color="blue" weight={4} />}
+      </MapContainer>
     </div>
   );
 };

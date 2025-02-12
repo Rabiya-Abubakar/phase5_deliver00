@@ -5,7 +5,7 @@
   margin: 10px auto;
   padding: 20px;
   text-align: center;
-  background-color: #ffebf5;
+  background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -61,15 +61,4 @@ textarea.form-input {
 
 .submit-button:hover {
   background-color: #45a049; /* Darker green on hover */
-}
-
-.btn-create{
-  width: 70%;
-  background-color: #41e947;
-  position: relative;
-  left: 90px;
-}
-
-.btn-create:hover{
-  background-color: #2fb133;
 }

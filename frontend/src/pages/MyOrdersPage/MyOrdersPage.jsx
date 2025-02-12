@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Use Link to navigate to the details page
 import "./MyOrdersPage.css";
 import OrderCard from "../../components/OrderCard/OrderCard";
+<Link to="/statistics">View Order Statistics</Link>
+
+
 
 const MyOrdersPage = () => {
   const [orders, setOrders] = useState([]);

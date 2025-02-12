@@ -11,7 +11,7 @@ const Homepage = () => {
       <header className="hero">
         <h2>"Swift, Secure, and Reliable – Your Parcel, Our Priority!"</h2>
         <p>DeliverOO ensures fast and safe parcel delivery at your convenience.</p>
-        <Link to="/contact" className="cta-button">Get in Touch</Link>
+        <Link to="/contactus" className="cta-button">Get in Touch</Link>
       </header>
 
       <section className="testimonials">

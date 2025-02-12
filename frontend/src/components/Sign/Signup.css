@@ -2,10 +2,6 @@
 /* General Styling */
 .signup-body {
     /*background-image: url(../../images/Deliveroo-background.jpeg);*/
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     font-family: Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
@@ -14,26 +10,30 @@
     margin: 0;
     font-family: 'Poppins', Arial, sans-serif;
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
+    display: inline-block;
     justify-content: space-between;
     height: 100%; /* Ensures the body takes up the full height of the viewport */
     margin: 0; /* Remove any default margin */
     overflow-x: hidden; /* Prevent horizontal scrolling */
     overflow-y: auto; 
     position: relative;
+    left: 750px;
+    top: 100px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
   }
   
-  
-  .signup-container {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  .signup-container{
+    border-radius: 10px;
+    padding: 20px 30px;
     width: 400px;
-    padding: 20px;
-    align-items: center;
+    height: 700px;
     
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
   }
+  
   
   .signup-container h1 {
     text-align: center;

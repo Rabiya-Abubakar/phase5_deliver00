@@ -1,0 +1,179 @@
+/* Global Styles */
+.about-container {
+  margin: auto;
+  padding: 50px 20px;
+  text-align: justify;
+  color: #333;
+  background: linear-gradient(to bottom, #ffffff, #cacaca, #797878);
+  min-height: 75vh;
+}
+
+
+.about-subtext {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* About Image */
+.about-image {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+}
+
+/* Content Section */
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 800px;
+  color: #444;
+}
+
+/* Key Features Section */
+.key-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.feature-card {
+  background: #979797;
+  padding: 20px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 40px;
+  color: #ff007f;
+  margin-bottom: 10px;
+}
+
+.feature-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.feature-description {
+  font-size: 16px;
+  color: #666;
+}
+
+/* Call-to-Action Section */
+.about-cta {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.about-cta h3 {
+  font-size: 24px;
+  color: #333;
+}
+
+.about-cta .cta-button {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: #ff007f;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.about-cta .cta-button:hover {
+  background: #e60074;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-header {
+    font-size: 28px;
+  }
+
+  .about-subtext {
+    font-size: 16px;
+  }
+
+  .feature-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+
+.about-us {
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.about-us h1 {
+  text-align: center;
+  color: rgb(255, 0, 119);
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.about-us h2 {
+  color: #444;
+  font-size: 1.8rem;
+  margin: 20px 0 10px;
+}
+
+.about-us p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 10px 0;
+}
+
+.about-us ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-us ul li {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 10px 0;
+  position: relative;
+  color: black;
+}
+
+.about-us ul li::before {
+  content: '✔';
+  color: rgb(255, 0, 119);
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.about ul li:hover {
+  background: #d6eaf8;
+  transform: scale(1.02);
+}

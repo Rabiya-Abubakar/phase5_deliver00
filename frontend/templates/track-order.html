@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track My Order</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Track Your Order</h2>
+    <input type="text" id="orderNumber" placeholder="Enter Order Number">
+    <button onclick="fetchOrderDetails()">Track Order</button>
+
+    <!-- Your Google Map iframe -->
+  
+
+    <iframe src="https://www.google.com/maps/d/u/0/embed?mid=1EyDO0IzECw4o8cb1BPP-VofvDLfgdpo&ehbc=2E312F" width="640" height="480"></iframe>
+
+
+    <script>
+        async function fetchOrderDetails() {
+            const orderNumber = document.getElementById("orderNumber").value;
+            if (!orderNumber) {
+                alert("Please enter an order number.");
+                return;
+            }
+
+            try {
+                // Replace with your actual API endpoint
+                const response = await fetch(`http://127.0.0.1:5000/api/v1/parcels/${orderNumber}`);
+                const data = await response.json();
+
+                if (!data.origin || !data.destination) {
+                    alert("Order details not found.");
+                    return;
+                }
+
+                updateMap(data.origin, data.destination);
+            } catch (error) {
+                alert("Error fetching order details.");
+                console.error(error);
+            }
+        }
+
+        function updateMap(origin, destination) {
+            const mapFrame = document.getElementById("googleMap");
+            const googleMapsURL = `https://www.google.com/maps/embed/v1/directions?key=YOUR_GOOGLE_MAPS_API_KEY&origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&mode=driving`;
+
+            mapFrame.src = googleMapsURL;
+        }
+    </script>
+
+</body>
+</html>
