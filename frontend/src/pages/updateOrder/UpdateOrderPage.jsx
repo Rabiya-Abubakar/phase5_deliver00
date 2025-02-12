@@ -17,7 +17,8 @@ const UpdateOrderPage = () => {
 
   const defaultOrigin = [-1.23593, 36.80780];  // Default origin
   const defaultDestination = [-1.26030, 36.88402];  // Default destination
-  const API_BASE_URL = "http://localhost:5000/api/v1"; // Adjust to your backend URL
+  // const API_BASE_URL = "http://localhost:5000/api/v1"; // Adjust to your backend URL
+  const API_BASE_URL = "https://phase5-deliver00.onrender.com/api/v1"; // Adjust to your backend URL
 
   // Fetch parcel data and route from the API
   const fetchParcelData = async (destinationCoords) => {

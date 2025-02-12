@@ -62,7 +62,10 @@ const OrderForm = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch("http://127.0.0.1:5000/api/v1/parcels", {
+      const response = await fetch(
+        // "http://127.0.0.1:5000/api/v1/parcels",
+        "https://phase5-deliver00.onrender.com/api/v1/parcels",
+         {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(order),

@@ -12,7 +12,8 @@ const SignUp = () => {
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  const SIGNUP_API_URL = 'http://localhost:5000/api/v1/auth/signup'
+  // const SIGNUP_API_URL = 'http://localhost:5000/api/v1/auth/signup'
+  const SIGNUP_API_URL = 'https://phase5-deliver00.onrender.com/api/v1/auth/signup'
 
 
   const handleSubmit = async (e) => {
