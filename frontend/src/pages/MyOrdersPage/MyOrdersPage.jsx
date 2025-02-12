@@ -75,7 +75,7 @@ const MyOrdersPage = () => {
           Pending
         </button>
         <button
-          className={activeButton === "cancelled" ? "active" : ""}
+          className={activeButton === "canceled" ? "active" : ""}
           onClick={() => handleStatusFilter("canceled")}
         >
           Cancelled

@@ -10,8 +10,7 @@ const LoginNav = () => {
         <li><Link to="/aboutus">About Us</Link></li>
         <li><Link to="/contactus">Contact Us</Link></li>
         <li><Link to="/services">Services</Link></li>
-        <li><Link to="/Faq">FAQs</Link></li>
-      </ul>
+        </ul>
     </nav>
   );
 };

@@ -5,7 +5,7 @@
       "description": "API for managing users and cargo in a delivery system",
       "version": "1.0.0"
     },
-    "host": "https://phase5-deliver00.onrender.com",
+    "host": "localhost:5000",
     "basePath": "/api/v1",
     "schemes": ["http"],
     "paths": {

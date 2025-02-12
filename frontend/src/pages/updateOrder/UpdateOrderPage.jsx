@@ -15,12 +15,16 @@ const UpdateOrderPage = () => {
   const [orderNumber, setOrderNumber] = useState("");
   const [destination, setDestination] = useState(null);
 
-  const defaultOrigin = [-1.23593, 36.80780];  // default origin
-  const defaultDestination = [-1.26030, 36.88402];  // default destination
+  const defaultOrigin = [-1.23593, 36.80780];  // Default origin
+  const defaultDestination = [-1.26030, 36.88402];  // Default destination
+  const API_BASE_URL = "http://localhost:5000/api/v1"; // Adjust to your backend URL
 
   // Fetch parcel data and route from the API
   const fetchParcelData = async (destinationCoords) => {
-    if (!destinationCoords) return;
+    if (!orderNumber) {
+      setError("Please enter an order number.");
+      return;
+    }
 
     setLoading(true);
     setError("");
@@ -32,7 +36,7 @@ const UpdateOrderPage = () => {
       setParcelData({
         description: "Working machines",
         destination_pin: destinationCoords.join(", "),
-        id: orderNumber || 44,
+        id: orderNumber,
         origin_pin: originCoords.join(", "),
         status: "pending",
         weight_kg: 30,
@@ -102,32 +106,39 @@ const UpdateOrderPage = () => {
     return destination ? <Marker position={destination}><Popup>New Destination</Popup></Marker> : null;
   };
 
-  // Handle sending updated parcel details to endpoint
+  // Handle sending updated parcel details to backend API
   const sendUpdatedDetails = async () => {
-    if (!parcelData) return;
+    if (!parcelData || !orderNumber) {
+      setError("Please enter an order number and ensure the data is loaded.");
+      return;
+    }
 
     const updatedDetails = {
-      orderNumber,
-      destination: parcelData.destination_pin,
-      totalDistance,
-      estimatedTime,
-      remainingDistance,
-      remainingTime,
+      origin_pin: parcelData.origin_pin,
+      destination_pin: parcelData.destination_pin,
+      weight_kg: parcelData.weight_kg,
+      description: parcelData.description,
     };
 
     try {
-      const response = await fetch("YOUR_ENDPOINT_URL", {
-        method: "PUT", // Assuming you want to PUT the new data
+      const response = await fetch(`${API_BASE_URL}/parcel/${orderNumber}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(updatedDetails),
       });
 
+      if (!response.ok) {
+        throw new Error(`Error: ${response.statusText}`);
+      }
+
       const result = await response.json();
       console.log("Updated order:", result);
+      alert("Parcel updated successfully!");
     } catch (error) {
       console.error("Error updating order:", error);
+      setError("Failed to update parcel.");
     }
   };
 

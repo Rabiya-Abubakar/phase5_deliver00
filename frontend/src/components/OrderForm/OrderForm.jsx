@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, Polyline } from 'react-leaflet';
 import L from 'leaflet';
+import { useNavigate } from 'react-router-dom';
 
 const OrderForm = () => {
+  const navigate = useNavigate()
   const [order, setOrder] = useState({
     origin_pin: "",
     destination_pin: "",
@@ -15,6 +17,8 @@ const OrderForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [originCoords, setOriginCoords] = useState(null);
   const [destinationCoords, setDestinationCoords] = useState(null);
+
+
 
   const HandleMapClick = () => {
     useMapEvents({
@@ -38,12 +42,23 @@ const OrderForm = () => {
     setOrder({ ...order, [e.target.name]: e.target.value });
   };
 
+  
+    // Set the user_id here (you can adjust based on how you get the user's ID)
+    const userId = localStorage.getItem("user_id")
+    useEffect(()=> {
+      setOrder({ ...order, user_id: userId });
+
+    },[])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!order.origin_pin || !order.destination_pin || !order.weight_kg || !order.description || !userEmail || !order.user_id) {
+    if (!order.origin_pin || !order.destination_pin || !order.weight_kg || !order.description || !userEmail) {
       setMessage("Please fill in all fields.");
       return;
     }
+
+    
+
 
     setIsLoading(true);
     try {
@@ -57,7 +72,9 @@ const OrderForm = () => {
       setOrder({ origin_pin: "", destination_pin: "", weight_kg: "", description: "", user_id: order.user_id });
       setOriginCoords(null);
       setDestinationCoords(null);
+      navigate('/myorders')
     } catch (error) {
+      console.log(error)
       setMessage(error.message);
     } finally {
       setIsLoading(false);
@@ -73,7 +90,7 @@ const OrderForm = () => {
         <input type="text" name="destination_pin" value={order.destination_pin} onChange={handleChange} placeholder="Select your Destination from the map" required />
         <input type="number" name="weight_kg" value={order.weight_kg} onChange={handleChange} placeholder="Weight (kg)" required />
         <input type="text" name="description" value={order.description} onChange={handleChange} placeholder="Description" required />
-        <input type="text" name="user_id" value={order.user_id} onChange={handleChange} placeholder="User ID" required />
+        {/* <input type="text" name="user_id" value={order.user_id} onChange={handleChange} placeholder="User ID" required />s */}
         <input type="email" value={userEmail} onChange={(e) => setUserEmail(e.target.value)} placeholder="User Email" required />
         <button type="submit" disabled={isLoading}>{isLoading ? "Creating..." : "Create Order"}</button>
       </form>
@@ -90,3 +107,5 @@ const OrderForm = () => {
 };
 
 export default OrderForm;
+
+
