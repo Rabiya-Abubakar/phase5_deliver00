@@ -32,8 +32,8 @@ class User(db.Model):
 class Parcel(db.Model):
     __tablename__ = 'parcels'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    origin_pin = db.Column(db.String(10), nullable=False)
-    destination_pin = db.Column(db.String(10), nullable=False)
+    origin_pin = db.Column(db.String(255), nullable=False)
+    destination_pin = db.Column(db.String(255), nullable=False)
     weight_kg = db.Column(db.Float, nullable=False)
     description = db.Column(db.String(255), nullable=False)
     status = db.Column(db.String(50), default='pending', nullable=False)
