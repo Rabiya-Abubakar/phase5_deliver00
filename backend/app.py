@@ -133,42 +133,6 @@ def get_users():
     return jsonify({"users": users}), 200
 
 
-# @app.route('/api/v1/parcels', methods=['POST'])
-# def create_parcel():
-#     data = request.get_json()
-#     origin_pin = data.get('origin_pin')
-#     destination_pin = data.get('destination_pin')
-#     weight_kg = data.get('weight_kg')
-#     description = data.get('description')
-#     user_id = data.get('user_id')
-
-#     if not all([origin_pin, destination_pin, weight_kg, description, user_id]):
-#         return jsonify({"error": "All fields are required"}), 400
-
-#     user = User.query.get(user_id)
-#     if not user:
-#         return jsonify({"error": "User not found"}), 404
-
-#     parcel = Parcel(
-#         origin_pin=origin_pin,
-#         destination_pin=destination_pin,
-#         weight_kg=weight_kg,
-#         description=description,
-#         user_id=user_id
-#     )
-
-#     db.session.add(parcel)
-#     db.session.commit()
-
-#     return jsonify({"message": "Parcel created successfully", "parcel": {
-#         "id": parcel.id,
-#         "origin_pin": parcel.origin_pin,
-#         "destination_pin": parcel.destination_pin,
-#         "weight_kg": parcel.weight_kg,
-#         "description": parcel.description,
-#         "status": parcel.status
-#     }}), 201
-
 @app.route('/api/v1/parcels', methods=['POST'])
 def create_parcel():
     data = request.get_json()
@@ -181,22 +145,13 @@ def create_parcel():
     if not all([origin_pin, destination_pin, weight_kg, description, user_id]):
         return jsonify({"error": "All fields are required"}), 400
 
-    try:
-        origin_lat, origin_lng = map(float, origin_pin.replace("Lat: ", "").replace("Lng: ", "").split(", "))
-        destination_lat, destination_lng = map(float, destination_pin.replace("Lat: ", "").replace("Lng: ", "").split(", "))
-        weight_kg = float(weight_kg)  # Ensure weight is a float
-    except ValueError:
-        return jsonify({"error": "Invalid latitude/longitude or weight format"}), 400
-
     user = User.query.get(user_id)
     if not user:
         return jsonify({"error": "User not found"}), 404
 
     parcel = Parcel(
-        origin_lat=origin_lat,
-        origin_lng=origin_lng,
-        destination_lat=destination_lat,
-        destination_lng=destination_lng,
+        origin_pin=origin_pin,
+        destination_pin=destination_pin,
         weight_kg=weight_kg,
         description=description,
         user_id=user_id
@@ -207,14 +162,13 @@ def create_parcel():
 
     return jsonify({"message": "Parcel created successfully", "parcel": {
         "id": parcel.id,
-        "origin_lat": parcel.origin_lat,
-        "origin_lng": parcel.origin_lng,
-        "destination_lat": parcel.destination_lat,
-        "destination_lng": parcel.destination_lng,
+        "origin_pin": parcel.origin_pin,
+        "destination_pin": parcel.destination_pin,
         "weight_kg": parcel.weight_kg,
         "description": parcel.description,
         "status": parcel.status
     }}), 201
+
 
 @app.route('/api/v1/users/<string:user_id>/parcels', methods=['GET'])
 def get_user_parcels(user_id):
