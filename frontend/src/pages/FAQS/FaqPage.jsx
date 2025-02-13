@@ -66,4 +66,4 @@ const Faqs = () => {
   );
 };
 
-export default FaqsPage;
+export default Faqs;
