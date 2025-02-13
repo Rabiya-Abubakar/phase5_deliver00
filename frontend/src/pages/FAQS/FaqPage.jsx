@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../assets/styles/faqs.css"; // Importing the styles
+// import "../assets/styles/faqs.css"; // Importing the styles
 
 const faqsData = [
   {

@@ -66,10 +66,16 @@ import ServicesPage from "./pages/Services/ServicesPage";
 import ContactUsPage from "./pages/ContactUs/ContactUsPage";
 import "leaflet/dist/leaflet.css";
 import LoginNav from "./components/LoginNav/LoginNav";
+// import Faqs from "./pages/FAQS/FaqPage";
+// import Profile from "./pages/Profile/profile";
+import ProfilePage from "./pages/profile";
+
+
+
 
 const AppContent = () => {
   const location = useLocation(); // Get current route
-  const hideNavbarAndFooter = location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/aboutus" || location.pathname === "/services" || location.pathname === "/contactus";
+  const hideNavbarAndFooter = location.pathname === "/" || location.pathname === "/signup" || location.pathname === "/aboutus" || location.pathname === "/services" || location.pathname === "/contactus" || location.pathname === "/faqs";
 
   const showLoginNav = location.pathname !== location.pathname === "/aboutus" || location.pathname === "/services" || location.pathname === "/contactus" || location.pathname === "/";
 
@@ -96,6 +102,8 @@ const AppContent = () => {
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/contactus" element={<ContactUsPage />} />
+        {/* <Route path="/faqs" element={<FaqPage />} /> */}
+        <Route path="/profile" element={<ProfilePage />}/>
 
       </Routes>
        <Footer />
