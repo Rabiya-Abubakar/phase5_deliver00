@@ -28,7 +28,7 @@
 }
 
 .buttons-container button {
-  color: white;
+  color: grey;
   background-color: #490827;
   border: none;
   padding: 10px 15px;
@@ -53,6 +53,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   padding-top: 20px;
+  background-color:lightcoral;
 }
 
 .orders-list a {

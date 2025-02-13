@@ -7,46 +7,43 @@
   padding: 20px;
 }
 
-/* Info Section */
-.info-section {
-  width: 40%;
-  max-width: 400px;
-  text-align: left;
-  padding: 20px;
-  color: white; /* White text for visibility */
-  background-color: #ccc;
-}
+/* .info-titlegab {
+  color: red;
+  font-size: 48px;
+} */
 
-.info-section h2 {
-  color: white; /* White text */
-  margin-bottom: 10px;
-}
 
-.info-section p {
-  color: white; /* White text */
-  font-size: 16px;
+.info-gab p {
+  text-align: center;
+  
 }
 
 /* Login Container */
 .login-container {
-  border-radius: 10px;
+  border-radius: 19px;
   padding: 20px 30px;
   width: 350px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: black;
+  box-shadow: 0 4px 8px rgba(24, 23, 23, 0.2);
   text-align: center;
   margin-left: 30px; /* Space between info and form */
-  background-color: beige;
+  background-color:#FFFFFF;
+  ;
 }
 
 .login-container h2 {
-  color: white; /* White text */
+  color: black; /* White text */
 }
 
 /* Form fields */
 .form-group {
   margin-bottom: 15px;
 }
-
+.form-button{
+  margin-bottom: 15px;
+  color: rgb(42, 46, 46);
+  
+}
 label {
   color: white; /* White text for labels */
 }
@@ -77,6 +74,7 @@ button:hover {
 /* Sign-up link */
 .signup-link a {
   color: #00ff00; /* Bright green link */
+  
 }
 
 .signup-link a:hover {

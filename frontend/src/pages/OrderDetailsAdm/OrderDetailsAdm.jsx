@@ -14,7 +14,8 @@ const OrderDetailsAdm = () => {
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/api/v1/parcels/${orderId}`);
+        // const response = await fetch(`http://127.0.0.1:5000/api/v1/parcels/${orderId}`);
+        const response = await fetch(`https://phase5-deliver00.onrender.com/api/v1/parcels/${orderId}`);
         const data = await response.json();
 
         if (response.ok) {

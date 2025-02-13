@@ -6,10 +6,11 @@ const Navbar = () => {
   const userRole = localStorage.getItem('user_role')
   return (
     <nav className="navbar">
-      <div className="navbar-left">
-        <Link to="/dashboard" className="navbar-link">
-          <h1 className="navbar-brand">My Dashboard</h1>
-        </Link>
+      <div>
+        <h1>
+        <Link to="/dashboard" className="navbar-title" >
+          My Dashboard
+        </Link></h1>
       </div>
       <div className="navbar-links">
         <Link to="/createorder" className="navbar-link">
