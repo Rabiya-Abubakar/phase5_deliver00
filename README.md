@@ -15,11 +15,12 @@ Deliveroo is a courier service that helps users deliver parcels to different des
 
 ## LIVE SERVER
  - FRONTEND: You can view the web live on
- - ()
+ - (https://phase5deliver001.vercel.app/)
 
  - BACKEND: You can view the backend routes on 
  - ()
-
+## Presentation
+https://1drv.ms/p/c/ee04752a27f936a4/EZAFF8yDp-1AuXnYgjsm5s0BtqIS93cM4R8n1kKIZwB-CA?e=0k1Ro3
 
 # Project Setup 
 
